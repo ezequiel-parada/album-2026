@@ -15,8 +15,8 @@ export default defineConfig({
         short_name: 'Álbum 2026',
         description:
           'Seguimiento del álbum de figuritas Panini del Mundial 2026.',
-        theme_color: '#16a34a',
-        background_color: '#FAFAF7',
+        theme_color: '#0A0E1A',
+        background_color: '#0A0E1A',
         display: 'standalone',
         start_url: '/',
         icons: [
