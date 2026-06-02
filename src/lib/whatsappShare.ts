@@ -74,6 +74,12 @@ function renderBucket(bucket: Bucket): string {
   return lines.join('\n');
 }
 
+function renderCodes(codes: string[]): string {
+  const bucket = emptyBucket();
+  for (const code of codes) pushCode(bucket, code);
+  return renderBucket(bucket);
+}
+
 export function buildWhatsappText(counts: Record<string, number>): string {
   const dup = emptyBucket();
   const missing = emptyBucket();
@@ -99,6 +105,25 @@ export function buildWhatsappText(counts: Record<string, number>): string {
     sections.push(`❌ ME FALTAN\n\n${renderBucket(missing)}`);
   }
 
+  return sections.join('\n\n');
+}
+
+/**
+ * Mensaje para reenviarle a la otra persona con el intercambio propuesto:
+ * lo que le puedo dar (mis repetidas que le faltan) y lo que necesito de ella
+ * (mis faltantes que tiene repetidas).
+ */
+export function buildTradeReply(result: {
+  iGive: string[];
+  iGet: string[];
+}): string {
+  const sections: string[] = [];
+  if (result.iGive.length) {
+    sections.push(`🟢 TENGO PARA VOS\n\n${renderCodes(result.iGive)}`);
+  }
+  if (result.iGet.length) {
+    sections.push(`🔵 NECESITO DE VOS\n\n${renderCodes(result.iGet)}`);
+  }
   return sections.join('\n\n');
 }
 
