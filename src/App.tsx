@@ -1,9 +1,10 @@
 import { NavLink, Route, Routes, useLocation } from 'react-router-dom';
-import { Home, Search, Settings } from 'lucide-react';
+import { ArrowLeftRight, Home, Search, Settings } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { HomeRoute } from './routes/HomeRoute';
 import { SearchRoute } from './routes/SearchRoute';
 import { ShareViewRoute } from './routes/ShareViewRoute';
+import { TradeRoute } from './routes/TradeRoute';
 import { SettingsRoute } from './routes/SettingsRoute';
 import { Onboarding } from './components/Onboarding';
 import { EnergyBar } from './components/Decoration';
@@ -43,6 +44,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomeRoute />} />
           <Route path="/buscar" element={<SearchRoute />} />
+          <Route path="/intercambio" element={<TradeRoute />} />
           <Route path="/share" element={<ShareViewRoute />} />
           <Route path="/ajustes" element={<SettingsRoute />} />
           <Route path="*" element={<HomeRoute />} />
@@ -58,9 +60,10 @@ export default function App() {
           }}
         >
           <div className="max-w-md mx-auto rounded-2xl bg-pitch-elev/95 backdrop-blur-lg border border-line-strong shadow-card overflow-hidden">
-            <div className="grid grid-cols-3 relative">
+            <div className="grid grid-cols-4 relative">
               <TabLink to="/" icon={<Home className="w-[18px] h-[18px]" strokeWidth={2.4} />} label="Álbum" />
               <TabLink to="/buscar" icon={<Search className="w-[18px] h-[18px]" strokeWidth={2.4} />} label="Buscar" />
+              <TabLink to="/intercambio" icon={<ArrowLeftRight className="w-[18px] h-[18px]" strokeWidth={2.4} />} label="Cambiar" />
               <TabLink to="/ajustes" icon={<Settings className="w-[18px] h-[18px]" strokeWidth={2.4} />} label="Ajustes" />
             </div>
           </div>
